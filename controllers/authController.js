@@ -26,10 +26,17 @@ export const register =async(req,res)=>{
         await user.save();
 
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'});
+        // res.cookie('token',token,{
+        //     httpOnly:true,
+        //     secure:process.env.NODE_ENV === 'production',
+        //     sameSite:process.env.NODE_ENV ==='production'?'none':'strict',
+        //     maxAge:7*24*60*60*1000,
+        // })
+
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // becomes true in production
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: true,
+            sameSite: 'none',
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -66,13 +73,18 @@ export const login=async(req,res)=>{
         }
 
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'})
+        // res.cookie('token',token,{
+        //     httpOnly:true,
+        //     secure:process.env.NODE_ENV === 'production',
+        //     sameSite:process.env.NODE_ENV ==='production'?'none':'strict',
+        //     maxAge:7*24*60*60*1000,
+        // }) 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // becomes true in production
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: true,
+            sameSite: 'none',
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
-
         return res.json({success:true,message:'Login successful'});
     } catch (error) {
         return res.json({success:false,message:error.message});
