@@ -11,9 +11,8 @@ const port=process.env.PORT || 4000;
 connectDB();
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://your-production-url.com'
+    'https://auth-backend-00d5.onrender.com'
 ];
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin:allowedOrigins,credentials:true}));
