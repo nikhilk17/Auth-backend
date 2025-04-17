@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://auth-frontend-psi-henna.vercel.app'
+    'https://auth-frontend-psi-henna.vercel.app',
+    'https://auth-frontend-msgiu5817-nikhils-projects-9aa3d82c.vercel.app'
 ];
 
 // Set up CORS with proper error handling
