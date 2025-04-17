@@ -11,7 +11,7 @@ const port=process.env.PORT || 4000;
 connectDB();
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://auth-backend-00d5.onrender.com'
+    'https://auth-frontend-psi-henna.vercel.app'
 ];
 app.use(express.json());
 app.use(cookieParser());
